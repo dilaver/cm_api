@@ -1257,7 +1257,6 @@ class ApiService(BaseApiResource):
       servers = (self.get_roles_by_type('HUE_SERVER')[0].name,)
     return self._role_cmd('hueSyncDb', servers)
 
-
   def dump_hue_db(self, *servers):
     """
     Dump the Hue server's database; it can be loaded later.
