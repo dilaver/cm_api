@@ -1253,7 +1253,29 @@ class ApiService(BaseApiResource):
     @param servers: Name of Hue Server roles to synchronize.
     @return: List of submitted commands.
     """
-    return self._role_cmd('hueSyncDb', servers)
+    hue_server_role = (self.get_roles_by_type('HUE_SERVER')[0].name,)
+    return self._role_cmd('hueSyncDb', hue_server_role)
+
+
+  def dump_hue_db(self, *servers):
+    """
+    Synchronize the Hue server's database.
+
+    @param servers: Name of Hue Server roles to synchronize.
+    @return: List of submitted commands.
+    """
+    hue_server_role = (self.get_roles_by_type('HUE_SERVER')[0].name,)
+    return self._role_cmd('hueDumpDb', hue_server_role)
+
+  def load_hue_db(self, *servers):
+    """
+    Synchronize the Hue server's database.
+
+    @param servers: Name of Hue Server roles to synchronize.
+    @return: List of submitted commands.
+    """
+    hue_server_role = (self.get_roles_by_type('HUE_SERVER')[0].name,)
+    return self._role_cmd('hueLoadDb', hue_server_role)
 
   def lsof(self, *rolenames):
     """
