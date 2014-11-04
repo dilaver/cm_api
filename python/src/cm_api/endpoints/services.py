@@ -1267,7 +1267,7 @@ class ApiService(BaseApiResource):
     """
     if not servers:
       servers = (self.get_roles_by_type('HUE_SERVER')[0].name,)
-    return self._role_cmd('hueDumpDb', hue_server_role)
+    return self._role_cmd('hueDumpDb', servers)
 
   def load_hue_db(self, *servers):
     """
@@ -1278,7 +1278,7 @@ class ApiService(BaseApiResource):
     """
     if not servers:
       servers = (self.get_roles_by_type('HUE_SERVER')[0].name,)
-    return self._role_cmd('hueLoadDb', hue_server_role)
+    return self._role_cmd('hueLoadDb', servers)
 
   def lsof(self, *rolenames):
     """
