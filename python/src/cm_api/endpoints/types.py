@@ -680,6 +680,8 @@ class ApiHdfsReplicationArguments(BaseApiObject):
     'preserveReplicationCount'  : None,
     'removeMissingFiles'        : None,
     'skipChecksumChecks'        : None,
+    'skipTrash'                 : None,
+    'replicationStrategy'       : None,
   }
 
 class ApiHdfsReplicationResult(BaseApiObject):
@@ -731,6 +733,7 @@ class ApiHiveReplicationArguments(BaseApiObject):
     'replicateData' : None,
     'hdfsArguments' : Attr(ApiHdfsReplicationArguments),
     'dryRun'        : None,
+    'replicateImpalaMetadata' : None,
   }
 
 class ApiHiveReplicationResult(BaseApiObject):
