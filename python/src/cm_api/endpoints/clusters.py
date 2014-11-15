@@ -37,7 +37,7 @@ def create_cluster(resource_root, name, version=None, fullVersion=None):
   if version is None and fullVersion is None:
     raise Exception("Either 'version' or 'fullVersion' must be specified")
   if fullVersion is not None:
-    api_version = 6
+    api_version = 9
     version = None
   else:
     api_version = 1
