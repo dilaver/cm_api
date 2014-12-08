@@ -56,3 +56,25 @@ class TestCluster(unittest.TestCase):
         data=data,
         retdata={ 'name' : 'foo'})
     cluster.upgrade_cdh(False, True, data['cdhParcelVersion'])
+
+  def test_restart(self):
+    resource = utils.MockResource(self, version=5)
+    cluster = ApiCluster(resource, name="foo")
+    resource.expect(
+      method="POST",
+      reqpath="/clusters/foo/commands/restart",
+      data=None,
+      retdata={'name' : 'foo'})
+    cluster.restart();
+
+    resource = utils.MockResource(self, version=7)
+    newCluster = ApiCluster(resource, name="bar")
+    data = dict()
+    data['restartOnlyStaleServices'] = False
+    data['redeployClientConfiguration'] = True
+    resource.expect(
+      method="POST",
+      reqpath="/clusters/bar/commands/restart",
+      data=data,
+      retdata={'name' : 'bar'})
+    newCluster.restart(False, True);
